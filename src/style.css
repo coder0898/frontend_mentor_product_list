@@ -131,7 +131,7 @@ h1 {
 .counter-box {
   display: none;
   position: relative;
-  bottom: 45px;
+  bottom: 5px;
   justify-content: space-between;
   align-items: center;
   padding: 10px;

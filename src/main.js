@@ -2,10 +2,12 @@ import "./style.css";
 
 // DOM Elements
 const listDisplay = document.getElementById("listDisplay");
+const AddCart = document.querySelector(".cart-btn");
+const CounterBox = document.querySelector(".counter-box");
 
 // Global State
 let productData = [];
-let cartCounter = 0;
+let cartCounter = 1;
 
 // Fetch JSON data
 async function getJSONData() {
@@ -80,6 +82,26 @@ function createCard({ image, name, category, price }) {
   priceTag.textContent = `$ ${price}`;
 
   content.append(categoryTag, title, priceTag);
+
+  // changing of display on clicking add card
+  addButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    addButton.style.display = "none";
+    counterBox.style.display = "flex";
+  });
+
+  // counter cart function
+  incrementBtn.addEventListener("click", () => {
+    cartCounter++;
+    counterCount.textContent = cartCounter;
+  });
+
+  decrementBtn.addEventListener("click", () => {
+    if (cartCounter > 1) {
+      cartCounter--;
+      counterCount.textContent = cartCounter;
+    }
+  });
 
   // Assemble card
   card.append(buttonGroup, content);
