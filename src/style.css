@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-background: hsl(13, 31%, 94%);
+  --title-color: hsl(14, 65%, 9%);
+  --button-background: hsl(20, 50%, 98%);
+  --border-color: #ccc;
+  --category-color:#848482;
+  --red-color:hsl(14, 86%, 42%);
+  --empty-color:hsl(12, 20%, 44%);
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  background-color: var(--primary-background);
+  color: var(--title-color);
+}
+
+/* Layout */
+main {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-container {
+  flex: 3;
+  margin-left: 20px;
+  max-width: 1000px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Grid Content */
+.list-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 1rem;
+  height: 300px;
+}
+
+
+.content span {
+  font-size: .98rem;
+  margin-left:10px ;
+  color: var(--category-color);
+}
+
+
+.card h4 {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  margin-top: 5;
+  margin-bottom: 5px;
+  color: var(--title-color);
+}
+
+.card p {
+  font-size: 1.1rem;
+  margin-left: 10px ;
+  color:var(--red-color);
+  font-weight: 600;
+}
+
+/* Button Group */
+.button-group {
+  position: relative;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.cart-btn {
+  background-color: var(--button-background);
+  border: 2px solid var(--border-color);
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+  height: 45px;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  gap: 8px;
+  color: var(--title-color);
+  font-weight: 700;
+}
+
+.cart-btn:hover {
+  color: var(--red-color);
+}
+
+.cart-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Counter Box */
+.counter-box {
+  display: none;
+  position: relative;
+  bottom: 45px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--red-color);
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.counter-box button {
+  width: 25px;
+  height: 25px;
+  border: 1px solid var(--primary-background);
+  border-radius: 50%;
+  background: transparent;
+  /* font-size: 1.2rem; */
+  font-weight: 600;
+  color: var(--primary-background);
+  cursor: pointer;
+}
+
+
+
+.counter-box button:hover {
+  color: var(--primary-background); /* Redundant but harmless */
+}
+
+.counter-box span{
+  color: var(--primary-background);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.content{
+  margin-top: -15px;
+}
+
+/* cart */
+.cart-container{
+  margin-top: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  background-color: var(--button-background);
+  border-radius: 1rem;
+  padding: 20px;
+}
+
+.cart-container h3{
+  font-size: 1.8rem;
+  color: var(--red-color);
+}
+
+.empty-content{
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.empty-content img{
+  width: 200px;
+}
+
+.empty-content p{
+  color: var(--empty-color);
+  margin-top: 10px;
+  font-weight: 600;
+}
