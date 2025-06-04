@@ -172,20 +172,45 @@ function updateCartUI() {
   `;
   cartList.appendChild(cartFooter);
 
-  // Add confirm order logic
   const confirmBtn = document.getElementById("confirmOrderBtn");
   if (confirmBtn) {
     confirmBtn.addEventListener("click", () => {
-      alert(
-        `Order confirmed! Total: $${totalPrice.toFixed(
-          2
-        )} (${totalItems} items)`
-      );
+      const modal = document.getElementById("orderModal");
+      const summaryContainer = document.getElementById("modalCartSummary");
+      const totalDisplay = document.getElementById("modalTotal");
 
-      // Reset cart
-      cartState = {};
-      updateCartUI();
-      resetAllProductCards();
+      // Clear previous content
+      summaryContainer.innerHTML = "";
+
+      let total = 0;
+
+      Object.entries(cartState).forEach(([id, quantity]) => {
+        const item = productData[id];
+        const itemTotal = item.price * quantity;
+        total += itemTotal;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "modal-item";
+        itemDiv.innerHTML = `
+        <span>${item.name} (${quantity}x)</span>
+        <span>$${itemTotal.toFixed(2)}</span>
+      `;
+        summaryContainer.appendChild(itemDiv);
+      });
+
+      totalDisplay.textContent = total.toFixed(2);
+
+      // Show the modal
+      modal.style.display = "block";
+
+      // Reset handler
+      const newOrderBtn = document.getElementById("startNewOrderBtn");
+      newOrderBtn.onclick = () => {
+        cartState = {};
+        updateCartUI();
+        resetAllProductCards();
+        modal.style.display = "none";
+      };
     });
   }
 }
@@ -205,4 +230,10 @@ function resetAllProductCards() {
 }
 
 // Init
+window.addEventListener("click", (e) => {
+  const modal = document.getElementById("orderModal");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
 window.addEventListener("DOMContentLoaded", getJSONData);
