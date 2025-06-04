@@ -12,7 +12,7 @@ let totalPrice = 0;
 // Fetch JSON data
 async function getJSONData() {
   try {
-    const res = await fetch("src/data.json");
+    const res = await fetch("./data.json");
     if (!res.ok) throw new Error("Failed to fetch data");
     productData = await res.json();
     displayProducts();
